@@ -1,0 +1,42 @@
+<?php
+
+class PaymentInvoice extends PaymentModule {
+
+	public static function getModuleInfo() {
+		return array(
+			'title' => 'PaymentInvoice', 
+			'version' => 001, 
+			'summary' => 'Invoice Payment method',
+			'singular' => false,
+			'autoload' => false, 
+			'requires' => 'PaymentModule'
+			);
+	}
+	
+	public $delayedPayment = true;
+
+	public function init() {
+		$this->currency = $this->defaultCurrency;
+	}
+
+	public function getTitle() {
+		return $this->_("Invoice");
+	}
+
+	public function processPayment() {
+		// This also marks the order paid, but no better solution currently
+		return true;
+	}
+
+	public function render() {
+		// TODO: This is little nonsense, maybe make this redirect?
+		// Planning to extend the payment modules to support redirect mode instead of render too, which would skip this
+		return "<form action='{$this->processUrl}'><input type='submit' value='Push the button...'/></form>";
+	}
+
+	public static function getModuleConfigInputfields(array $data) {
+		$inputfields = new InputfieldWrapper();
+		return $inputfields;
+
+	}
+}
