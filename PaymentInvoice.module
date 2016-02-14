@@ -13,6 +13,7 @@ class PaymentInvoice extends PaymentModule {
 			);
 	}
 	
+	// Invoice payments will stay unpaid
 	public $delayedPayment = true;
 
 	public function init() {
@@ -24,7 +25,7 @@ class PaymentInvoice extends PaymentModule {
 	}
 
 	public function processPayment() {
-		// This also marks the order paid, but no better solution currently
+		// Because of $delayedPayment, order will stay unpaid, but successful
 		return true;
 	}
 
