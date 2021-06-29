@@ -5,7 +5,7 @@ class PaymentInvoice extends PaymentModule {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'PaymentInvoice', 
-			'version' => 001, 
+			'version' => 1.0.0, 
 			'summary' => 'Invoice Payment method',
 			'singular' => false,
 			'autoload' => false, 
